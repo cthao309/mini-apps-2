@@ -8,6 +8,19 @@ class Header extends Component {
       searchTerm: ""
     };
 
+    this.handleChanges = this.handleChanges.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleChanges(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  handleSearch(event) {
+    event.preventDefault();
+    this.props.handleSearch(this.state.searchTerm);
   }
 
   render() {
@@ -23,14 +36,14 @@ class Header extends Component {
           <a className="navbar-brand" style={fontStyles}>
             Historical Events Finder
           </a>
-          <form onSubmit={() => this.handleSearch.bind(this)} className="form-inline">
+          <form onSubmit={this.handleSearch} className="form-inline">
             <input
               className="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
               name="searchTerm"
-              value={searchTerm}
+              value={this.state.searchTerm}
               onChange={this.handleChanges}
             />
 
