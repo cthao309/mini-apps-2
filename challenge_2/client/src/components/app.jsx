@@ -10,6 +10,14 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get('/api')
+      .then(data => {
+        console.log('Ajax call to api => ', data);
+      })
+      .catch(err => console.error(err))
+  }
+
   render() {
     return (
       <div>
