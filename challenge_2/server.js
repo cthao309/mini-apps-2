@@ -22,7 +22,7 @@ app.get('/api', (req, res) => {
   axios.get(`https://api.coindesk.com/v1/bpi/historical/close.json?start=2020-01-01&end=2020-06-12`)
     .then(({data}) => {
       console.log('data => ', data)
-      res.status(200).send(data)
+      res.status(200).send(data.bpi)
     })
     .catch(err => res.send(err))
 })
