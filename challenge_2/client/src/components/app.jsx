@@ -8,7 +8,8 @@ class App extends Component {
     super();
 
     this.state = {
-      info: []
+      data: [],
+      isLoading: true
     }
   }
 
@@ -16,7 +17,10 @@ class App extends Component {
     axios.get('/api')
       .then(data => {
         console.log('Ajax call to api => ', data);
-        this.setState({ info: data })
+        this.setState({
+          data: data,
+          isLoading: false
+        })
       })
       .catch(err => console.error(err))
   }
@@ -30,7 +34,8 @@ class App extends Component {
     return (
       <div style={alignContent}>
         <h1>Mini App Challenge 2</h1>
-        <Graph />
+        { this.state.isLoading && <i className="fa fa-spinner fa-spin"></i> }
+        { !this.state.isLoading && <Graph data={this.state.data}/> }
       </div>
     )
   }
