@@ -1,13 +1,12 @@
 {
-  "name": "challenge_1",
+  "name": "y",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack -d --watch",
-    "json-server": "json-server --watch data/db.json",
-    "start": "npm run json-server && nodemon server/server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
